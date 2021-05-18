@@ -24,6 +24,7 @@ jobs:
       - name: Commit files
         run: |
           git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
+          git add *
+          git commit -m "Add changes"
           git push origin master
           echo "🍏 This job's status is ${{ job.status }}."
