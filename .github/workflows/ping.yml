@@ -1,5 +1,7 @@
 name: GitHub Actions Demo
-on: [push]
+on:
+  schedule:
+    - cron: '0/5 * * * *'
 jobs:
   Ping:
     runs-on: ubuntu-latest
