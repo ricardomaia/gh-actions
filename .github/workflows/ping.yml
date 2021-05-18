@@ -4,8 +4,7 @@ jobs:
   Ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Bootstrap
-        run: |
+      - run: |
           echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
           echo "Installing HTTPing"
           sudo apt install httping -y
@@ -16,7 +15,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name:
+      - name: HTTPing
       - run: |
           httping brainfork.info -c 1 -r -Q -l -G -Y -M > brainfork.info.json
           cat ./brainfork.info.json
