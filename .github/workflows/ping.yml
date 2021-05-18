@@ -1,11 +1,14 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Pinh:
+  Ping:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: ping 8.8.8.8 -c 4
+      - name: Installing HTTPing
+      - run: sudo apt install httping -y
+      - name: Ping brainfork.info
+      - run: httping brainfork.info -c 4
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
