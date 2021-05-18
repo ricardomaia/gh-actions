@@ -27,5 +27,8 @@ jobs:
           git config --global user.name "Ricardo Maia"
           git add *
           git commit -am "Add changes"
-          git push
-          echo "🍏 This job's status is ${{ job.status }}."
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.ref }}
