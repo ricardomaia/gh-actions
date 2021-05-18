@@ -8,7 +8,7 @@ jobs:
       - run: echo "Installing HTTPing"
       - run: sudo apt install httping -y
       - run: echo "Pinging brainfork.info"
-      - run: httping brainfork.info -c 4
+      - run: httping brainfork.info -c 1 -r -Q -l -G -Y -M > brainfork.info.json
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
