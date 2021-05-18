@@ -7,9 +7,6 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "Installing HTTPing"
       - run: sudo apt install httping -y
-      - run: echo "Pinging brainfork.info"
-      - run: httping brainfork.info -c 1 -r -Q -l -G -Y -M > brainfork.info.json
-      - run: cat ./brainfork.info.json
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
@@ -17,6 +14,10 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Pinging brainfork.info
+      - run: |
+          httping brainfork.info -c 1 -r -Q -l -G -Y -M > brainfork.info.json
+          cat ./brainfork.info.json
       - name: Commit files
         run: |
           git config --local user.name "github-actions[bot]"
