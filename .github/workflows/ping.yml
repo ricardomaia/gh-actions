@@ -24,6 +24,12 @@ jobs:
         run: |
           httping brainfork.info -c 1 -r -Q -l -G -Y -M > brainfork.info.json
           cat ./brainfork.info.json
+      - name: Chmod
+        run: |
+          chmod +x ./response_time.sh
+      - name: Response Times
+        run: |
+          ./response_time.sh
       - name: Commit files
         run: |
           git config --global user.email "rsmaia@gmail.com"
