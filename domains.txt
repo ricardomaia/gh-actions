@@ -1,3 +1,5 @@
 http://brainfork.info
 https://www.google.com
 http://example.com
+https://en.wikipedia.org
+https://www.sitepoint.com
