@@ -1,0 +1,3 @@
+http://brainfork.info
+https://www.google.com
+http://example.com
