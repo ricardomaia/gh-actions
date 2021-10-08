@@ -27,14 +27,77 @@ chartData = () => {
 
         var options1 = {
           chart: {
+            locales: [
+              {
+                name: "pt_br",
+                options: {
+                  months: [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December",
+                  ],
+                  shortMonths: [
+                    "Jan",
+                    "Fev",
+                    "Mar",
+                    "Abr",
+                    "Ma=i",
+                    "Jun",
+                    "Jul",
+                    "Ago",
+                    "Set",
+                    "Out",
+                    "Nov",
+                    "Dez",
+                  ],
+                  days: [
+                    "Domingo",
+                    "Segunda",
+                    "Terça",
+                    "Quarta",
+                    "Quinta",
+                    "Sexta",
+                    "Sábado",
+                  ],
+                  shortDays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+                  toolbar: {
+                    exportToSVG: "Download SVG",
+                    exportToPNG: "Download PNG",
+                    menu: "Menu",
+                    selection: "Selection",
+                    selectionZoom: "Selection Zoom",
+                    zoomIn: "Zoom In",
+                    zoomOut: "Zoom Out",
+                    pan: "Panning",
+                    reset: "Reset Zoom",
+                  },
+                },
+              },
+            ],
+            defaultLocale: "pt_br",
+            zoom: {
+              autoScaleYaxis: true,
+            },
             id: "chart2",
             type: "area",
-            height: 230,
+            height: 330,
             foreColor: "#ccc",
             toolbar: {
-              autoSelected: "pan",
-              show: false,
+              show: true,
             },
+          },
+          markers: {
+            size: 0,
+            style: "hollow",
           },
           colors: ["#00BAEC"],
           stroke: {
@@ -42,7 +105,7 @@ chartData = () => {
           },
           grid: {
             borderColor: "#555",
-            clipMarkers: false,
+            clipMarkers: true,
             yaxis: {
               lines: {
                 show: true,
@@ -60,13 +123,14 @@ chartData = () => {
             },
           },
           markers: {
-            size: 0,
+            size: 3,
             colors: ["#000524"],
             strokeColor: "#00BAEC",
             strokeWidth: 3,
           },
           series: [
             {
+              name: "Tempo de Resposta",
               data: data,
             },
           ],
@@ -75,10 +139,23 @@ chartData = () => {
           },
           xaxis: {
             type: "datetime",
+
+            labels: {
+              datetimeUTC: false,
+              datetimeFormatter: {
+                year: "yyyy",
+                month: "MMM 'yy",
+                day: "dd MMM",
+                hour: "HH:mm",
+              },
+            },
           },
           yaxis: {
             min: 0,
-            tickAmount: 4,
+            tickAmount: 10,
+          },
+          legend: {
+            show: true,
           },
         };
 
@@ -124,6 +201,15 @@ chartData = () => {
           },
           xaxis: {
             type: "datetime",
+            labels: {
+              datetimeUTC: false,
+              datetimeFormatter: {
+                year: "yyyy",
+                month: "MMM 'yy",
+                day: "dd MMM",
+                hour: "HH:mm",
+              },
+            },
             tooltip: {
               enabled: true,
             },
