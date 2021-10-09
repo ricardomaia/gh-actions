@@ -4,6 +4,7 @@ const URL_TO_FETCH =
 chartData = () => {
   fetch(URL_TO_FETCH, {
     method: "get", // opcional
+    cache: "no-store",
   })
     .then(function (response) {
       response.text().then(function (result) {
