@@ -7,13 +7,15 @@ chartData = () => {
   })
     .then(function (response) {
       response.text().then(function (result) {
-        console.log(result);
-        str = result.substring(0, result.length - 1);
-        console.log(str);
+        console.log("result", result);
+        str = result
+          .replace(/(\r\n|\n|\r)/gm, "") // removing line breaks
+          .replace(/,([^,]*)$/gimu, "$1"); // removing last comma
+        console.log("str", str);
         data_string = `[${str}]`;
         console.log(data_string);
         var data = JSON.parse(data_string);
-        console.log(data_string);
+        console.log("data", data);
         /*
       var data = [
         [1633722014000, 0.2719],
